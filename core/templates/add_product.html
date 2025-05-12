@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}Add Product{% endblock %}
+{% load static %}
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/add_product.css' %}">
+{% endblock %}
+{% block content %}
+  <form method="POST" class="custom-form">
+    {% csrf_token %}
+
+    <div class="custom-form-group">
+        <label for="{{ form.name.id_for_label }}">Name</label>
+        {{ form.name }}
+    </div>
+
+    <div class="custom-form-group">
+        <label for="{{ form.description.id_for_label }}">Description</label>
+        {{ form.description }}
+    </div>
+
+    <div class="custom-form-group">
+        <label for="{{ form.price.id_for_label }}">Price</label>
+        {{ form.price }}
+    </div>
+
+      <div class="custom-form-group">
+          <label for="{{ form.quantity.id_for_label }}">Quantity</label>
+          {{ form.quantity }}
+      </div>
+
+    <div class="custom-form-group">
+        <label for="{{ form.category.id_for_label }}">Category</label>
+        {{ form.category }}
+    </div>
+
+    <button type="submit" class="custom-btn">Add Product</button>
+  </form>
+{% endblock %}

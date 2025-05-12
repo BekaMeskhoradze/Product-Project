@@ -1,0 +1,33 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/global.css' %}">
+    {% block extra_head %}{% endblock %}
+    <title>{% block title %}{% endblock %}</title>
+
+</head>
+<body>
+    <header>
+        <nav class="header-nav">
+            <ul class="header-ul">
+                    <li class="header-li {% if request.path == '/' %}active{% endif %}" ><a href="{% url 'index' %}">Home</a></li>
+                    <li class="header-li"><a href="{% url 'index' %}">About</a></li>
+                    <li class="header-li"><a href="{% url 'index' %}">Contact</a></li>
+            </ul>
+            <div class="search-bar">
+                <form>
+                    <input type="text" name="query" placeholder="Search..." />
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+    </header>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

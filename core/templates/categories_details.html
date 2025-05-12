@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/categories_details.css' %}">
+{% endblock %}
+{% block title %}{{ category.name }}{% endblock %}
+{% block content %}
+    <h2>{{ category.name }}</h2>
+    <ul class="product-ul">
+        {% for product in products %}
+            <li class="product-list">
+                <p>Product-name: {{ product.name }}</p>
+                <p>Product-price: {{ product.price }}$</p>
+                <p>Total-products-{{ product.quantity }}</p>
+                <p>Products-total-value-{{ product.total_value }}$</p>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <div class="add-product-container">
+        <a href="{% url 'add_product' %}" class="add-btn">Add new product</a>
+    </div>
+
+    <div class="product-stats">
+        <div class="stat-row">
+            <span class="label">Most expensive product:</span>
+            <span class="value">{{ most_expensive_product.name }} — {{ most_expensive_product.price }}$</span>
+        </div>
+        <div class="stat-row">
+            <span class="label">Cheapest product:</span>
+            <span class="value">{{ cheapest_product.name }} — {{ cheapest_product.price }}$</span>
+        </div>
+        <div class="stat-row">
+            <span class="label">Average price of products:</span>
+            <span class="value">{{ avg_product_price }}$</span>
+        </div>
+        <div class="stat-row">
+            <span class="label">Total value of products:</span>
+            <span class="value">{{ all_product_total_price }}$</span>
+        </div>
+    </div>
+{% endblock %}

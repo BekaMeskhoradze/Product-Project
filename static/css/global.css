@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+}
+
+body{
+    background-color: #dbd8e3;
+}
+
+a{
+    text-decoration: none;
+}
+
+ul, li{
+    list-style-type: none;
+}
+
+header{
+    width: 100%
+}
+
+header .header-nav{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+header .header-nav .header-ul{
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+header .header-nav .header-ul .header-li{
+    padding: .5rem;
+    border-radius: 4px;
+    transition: all .3s ease
+}
+header .header-nav .header-ul .header-li:hover{
+    background-color: #ff9a3c;
+}
+
+header .header-nav .header-ul .header-li.active{
+    background-color: #ff9a3c;
+}
+
+header .header-nav .header-ul .header-li a{
+    color: #00204a;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+.search-bar input {
+    padding: 10px 15px;
+    font-size: 1rem;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.search-bar input:focus {
+    border-color: #fdb44b;
+    box-shadow: 0 0 5px rgba(253, 180, 75, 0.7);
+}
+
+.search-bar button {
+    background-color: #fdb44b;
+    border: none;
+    padding: 10px 15px;
+    color: white;
+    font-size: 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-bar button:hover {
+    background-color: #e5973f;
+}
