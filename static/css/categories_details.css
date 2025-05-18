@@ -77,3 +77,48 @@ h2{
     color: #fff;
     font-weight: 500;
 }
+
+.update-btn{
+    padding: .6rem;
+    background-color: #009900;
+    border:none;
+    border-radius: 6px;
+    color: white;
+    display: block;
+    text-align:center;
+    width: 100%;
+    position: relative;
+    top: 20px;
+    cursor: pointer;
+    align-self: flex-end;
+    font-size: .9rem;
+    font-weight: 500;
+    transition: all .2s ease;
+}
+
+.delete-btn{
+    padding: .6rem;
+    background-color: #8B0000;
+    border:none;
+    border-radius: 6px;
+    color: white;
+    display: block;
+    text-align:center;
+    width: 100%;
+    position: relative;
+    top: 40px;
+    cursor: pointer;
+    align-self: flex-end;
+    font-size: .9rem;
+    font-weight: 500;
+    transition: all .3s ease;
+}
+
+.delete-btn:hover{
+    transform: scale(1.02);
+    background-color: #c9182b;
+}
+.update-btn:hover{
+    transform: scale(1.02);
+    background-color: #32CD32;
+}
