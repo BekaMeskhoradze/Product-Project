@@ -6,20 +6,19 @@
 {% block title %}{{ category.name }}{% endblock %}
 {% block content %}
     <h2>{{ category.name }}</h2>
-    <ul class="product-ul">
+
+    <div class="product-ul">
         {% for product in products %}
-            <div class="product_container">
-                <a href="{% url 'product_detail' product.pk %}">
+            <a href="{% url 'product_detail' product.pk %}">
                 <li class="product-list">
                     <p>Product name: <span>{{ product.name }}</span></p>
                     <p>Product price: <span>{{ product.price }}$</span></p>
                     <p>Total products - <span>{{ product.quantity }}</span></p>
                     <p>Products total value - <span>{{ product.total_value }}$</span></p>
                 </li>
-                </a>
-            </div>
+            </a>
         {% endfor %}
-    </ul>
+    </div>
 
     <div class="add-product-container">
         <a href="{% url 'add_product' %}" class="add-btn">Add new product</a>

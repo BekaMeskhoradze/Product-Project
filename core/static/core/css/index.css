@@ -1,34 +1,55 @@
-.container{
-    position: relative;
-    top: -3rem;
-    width: 350px;
+.container {
+    max-width: 350px;
+    margin-top: 2rem;
+    margin-left: 0;
 }
 
-.container nav{
-    position: relative;
-    top: 2rem;
+.main-ul {
+    padding-left: 0;
 }
 
-.main-li{
-border-bottom: 2px solid #9b9b9b;
+.main-li {
+    border-bottom: 2px solid #9b9b9b;
+    padding-right: 1rem;
 }
 
-.categories-names{
+.categories-names {
     display: block;
-    padding: .6rem 1rem;
-    font-size: .9rem;
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
     font-weight: 500;
     color: #6643b5;
-    transition: all .2s ease-in-out;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    justify-content: space-between;
 }
 
-.categories-names:hover{
-    transform: translate(26px,0px);
-    color: #ff9a3c;
-    border-left: 2px solid #27296d;
+.categories-names::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background: #27296d;
+    transition: width 0.3s ease;
 }
-.categories-names span{
-    margin-left: 10px;
-    font-size: .7rem;
-    font-weight: 400;
+
+.categories-names:hover {
+    color: #ff9a3c;
+    transform: translateX(26px) scale(1.03);
+}
+
+.categories-names:hover::before {
+    width: 4px;
+}
+
+.categories-names .prod-qvty {
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: .2rem .5rem;
+    color: white;
+    border-radius: .8rem;
+    background-color: #ff6f3c;
 }

@@ -9,15 +9,20 @@
     <link rel="stylesheet" href="{% static 'css/global.css' %}">
     {% block extra_head %}{% endblock %}
     <title>{% block title %}{% endblock %}</title>
-
 </head>
 <body>
     <header>
         <nav class="header-nav">
             <ul class="header-ul">
-                    <li class="header-li"><a class="{% if request.path == '/' %}active{% endif %}" href="{% url 'index' %}">Home</a></li>
-                    <li class="header-li {% if request.path == '/about/' %}active{% endif %}"><a class="{% if request.path == '/about/' %}active{% endif %}" href="{% url 'about' %}">About</a></li>
-                    <li class="header-li {% if request.path == '/contact/' %}active{% endif %}"><a class="header-li {% if request.path == '/contact/' %}active{% endif %}" href="{% url 'contact' %}">Contact</a></li>
+                <li class="header-li">
+                    <a class="{% if request.resolver_match.url_name == '/' %}active{% endif %}" href="{% url 'index' %}">Home</a>
+                </li>
+                <li class="header-li">
+                    <a class="{% if request.resolver_match.url_name == '/about/' %}active{% endif %}" href="{% url 'about' %}">About</a>
+                </li>
+                <li class="header-li">
+                    <a class="{% if request.resolver_match.url_name == '/contact/' %}active{% endif %}" href="{% url 'contact' %}">Contact</a>
+                </li>
             </ul>
             <div class="search-bar">
                 <form>
