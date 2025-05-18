@@ -1,11 +1,10 @@
 from functools import cached_property
 from django.shortcuts import render, get_object_or_404,redirect
-from unicodedata import category
-
+from django.urls import reverse_lazy
 from core.forms import ProductForm
 from core.models import *
-from django.db.models import F, ExpressionWrapper, DecimalField, Avg, Sum
-from django.views.generic import ListView, DetailView
+from django.db.models import F, ExpressionWrapper, DecimalField, Count
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 # def index(request):
 #     categories = Category.objects.all().annotate(product_count=models.Count('products'))
@@ -15,7 +14,11 @@ class CategoryListView(ListView):
     model = Category
     template_name = 'index.html'
     context_object_name = 'categories'
-    queryset = Category.objects.all().annotate(product_count=models.Count('products'))
+
+    def get_queryset(self):
+        return Category.objects.annotate(
+            product_count = Count('products')
+        ).order_by('name')
 
 # def categories_details(request, category_name):
 #
@@ -105,39 +108,61 @@ class ProductListView(DetailView):
 
 
 
-def add_product(request):
-    if request.method == 'POST':
-        form = ProductForm(request.POST)
+# def add_product(request):
+#     if request.method == 'POST':
+#         form = ProductForm(request.POST)
+#
+#         if form.is_valid():
+#             form.save()
+#             return redirect('index')
+#     else:
+#         form = ProductForm()
+#     return render(request, 'add_product.html', {'form': form})
 
-        if form.is_valid():
-            form.save()
-            return redirect('index')
-    else:
-        form = ProductForm()
-    return render(request, 'add_product.html', {'form': form})
+class ProductCreateView(CreateView):
+    model = Product
+    form_class = ProductForm
+    template_name = 'add_product.html'
+    success_url = reverse_lazy('index')
 
-def update_product(request,product_pk):
-    product =get_object_or_404(Product, pk=product_pk)
+# def update_product(request,product_pk):
+#     product =get_object_or_404(Product, pk=product_pk)
+#
+#     if request.method == 'POST':
+#         form = ProductForm(request.POST, instance=product)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('categories_details', product.category.name)
+#     else:
+#         form = ProductForm(instance=product)
+#     return render(request, 'update_product.html', {'form': form})
 
-    if request.method == 'POST':
-        form = ProductForm(request.POST, instance=product)
-        if form.is_valid():
-            form.save()
-            return redirect('categories_details', product.category.name)
-    else:
-        form = ProductForm(instance=product)
-    return render(request, 'update_product.html', {'form': form})
+class ProductUpdateView(UpdateView):
+    model = Product
+    form_class = ProductForm
+    template_name = 'update_product.html'
+    pk_url_kwarg = 'pk'
 
-def delete_product(request,product_pk):
-    product =get_object_or_404(Product, pk=product_pk)
-    if request.method == 'POST':
-        product.delete()
-        return redirect('index')
-    else:
-        return redirect('index')
+    def get_success_url(self):
+        category_name = self.object.category.name
+        return reverse_lazy('categories_details', kwargs={'category_name': category_name})
 
 
+# def delete_product(request,product_pk):
+#     product =get_object_or_404(Product, pk=product_pk)
+#     if request.method == 'POST':
+#         product.delete()
+#         return redirect('index')
+#     else:
+#         return redirect('index')
 
+class ProductDeleteView(DeleteView):
+    model = Product
+    pk_url_kwarg = 'pk'
+
+    def get_success_url(self):
+        category_name = self.object.category.name
+        return reverse_lazy('categories_details', kwargs={'category_name': category_name})
 
 
 

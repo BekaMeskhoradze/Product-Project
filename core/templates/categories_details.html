@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block extra_head %}
-    <link rel="stylesheet" href="{% static 'css/categories_details.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/categories_details.css' %}">
 {% endblock %}
 {% block title %}{{ category.name }}{% endblock %}
 {% block content %}
@@ -11,17 +11,12 @@
             <div class="product_container">
                 <a href="{% url 'product_detail' product.pk %}">
                 <li class="product-list">
-                    <p>Product-name: {{ product.name }}</p>
-                    <p>Product-price: {{ product.price }}$</p>
-                    <p>Total-products-{{ product.quantity }}</p>
-                    <p>Products-total-value-{{ product.total_value }}$</p>
+                    <p>Product name: <span>{{ product.name }}</span></p>
+                    <p>Product price: <span>{{ product.price }}$</span></p>
+                    <p>Total products - <span>{{ product.quantity }}</span></p>
+                    <p>Products total value - <span>{{ product.total_value }}$</span></p>
                 </li>
                 </a>
-                <a href="{% url 'update_product' product.pk %}" class="update-btn">Update product</a>
-                <form action="{% url 'delete_product' product.pk %}" method="POST">
-                    {% csrf_token %}
-                    <button class="delete-btn" onclick="return confirm('Are you sure you want to delete?')" >Delete product</button>
-                </form>
             </div>
         {% endfor %}
     </ul>

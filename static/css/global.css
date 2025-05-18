@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
 *{
     margin: 0;
     padding: 0;
@@ -7,7 +6,7 @@
 }
 
 html {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Urbanist", sans-serif;
     font-size: 16px;
 }
 
@@ -24,7 +23,11 @@ ul, li{
 }
 
 header{
-    width: 100%
+    width:100%;
+    box-shadow: 2px 4px 7px 0px rgba(0,0,0,0.1);
+    -webkit-box-shadow: 2px 4px 7px 0px rgba(0,0,0,0.1);
+    -moz-box-shadow: 2px 4px 7px 0px rgba(0,0,0,0.1);
+    margin-bottom: 3rem;
 }
 
 header .header-nav{

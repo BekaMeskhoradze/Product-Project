@@ -1,11 +1,23 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'core/css/product_details.css' %}">
+{% endblock %}
 {% block title %}Product details{% endblock %}
 
 {% block content %}
-        <div class="product_details">
-            <h2>Product name:{{ product.name }}</h2>
-            <p>Price: {{ product.price }}$</p>
-            <p>Total products: {{ product.quantity }} products</p>
-            <p>Total price of products: {{ product.total_value }}$</p>
+    <div class="product_details">
+        <h2>{{ product.name }}</h2>
+        <p>Price: {{ product.price }}$</p>
+        <p>Total products: {{ product.quantity }} products</p>
+        <p>Total price of products: {{ product.total_value }}$</p>
+
+        <div class="product-buttons">
+            <a href="{% url 'update_product' product.pk %}" class="update-btn">Update product</a>
+            <form action="{% url 'delete_product' product.pk %}" method="POST">
+                {% csrf_token %}
+                <button class="delete-btn" onclick="return confirm('Are you sure you want to delete?')">Delete product</button>
+            </form>
         </div>
+    </div>
 {% endblock %}

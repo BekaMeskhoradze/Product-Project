@@ -1,0 +1,84 @@
+h2{
+    text-align: center;
+    color: #f57b51;
+    font-size: 2rem;
+    text-shadow: 0px 1px 3px rgba(0,0,0,1);
+}
+
+.product-ul {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    flex-wrap:wrap;
+    padding: 5rem 0;
+}
+
+.product-ul .product-list{
+    width: 400px;
+    padding: 2rem;
+    border-radius: .5rem;
+    background-color: #fcfefe;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.product-ul .product-list:hover{
+    transform: scale(1.04)
+}
+
+.product-ul .product-list p{
+    color: #00204a;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.product-ul .product-list p span{
+    color: #eb2632;
+    font-size: 1rem;
+}
+
+.product-stats {
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: sans-serif;
+    text-align: center;
+    background-color: #ff9a3c;
+}
+
+.stat-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.label {
+    font-weight: bold;
+    min-width: 220px;
+    text-align: right;
+}
+
+.value {
+    text-align: left;
+}
+
+.add-product-container {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.add-btn{
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: #4756ca;
+    color: #fff;
+    font-weight: 500;
+}

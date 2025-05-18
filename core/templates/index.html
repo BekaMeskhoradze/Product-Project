@@ -1,15 +1,18 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block extra_head %}
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/index.css' %}">
 {% endblock %}
 {% block title %}Home Page{% endblock %}
 {% block content %}
+
     <div class="container">
-        <ul class='main-ul'>
-        {% for category in categories %}
-            <a href="{% url 'categories_details' category.name %}" class="categories-names"><li class="main-li">{{ category.name }}<p class="prod-qvty">({{ category.product_count }} products)</p></li></a>
-        {% endfor %}
-        </ul>
+        <nav>
+            <ul class='main-ul'>
+            {% for category in categories %}
+                <li class="main-li"><a href="{% url 'categories_details' category.name %}" class="categories-names">{{ category.name }}<span class="prod-qvty">({{ category.product_count }} products)</span></a></li>
+            {% endfor %}
+            </ul>
+        </nav>
     </div>
 {% endblock %}
