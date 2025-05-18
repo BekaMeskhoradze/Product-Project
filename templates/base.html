@@ -15,9 +15,9 @@
     <header>
         <nav class="header-nav">
             <ul class="header-ul">
-                    <li class="header-li {% if request.path == '/' %}active{% endif %}" ><a href="{% url 'index' %}">Home</a></li>
-                    <li class="header-li"><a href="{% url 'index' %}">About</a></li>
-                    <li class="header-li"><a href="{% url 'index' %}">Contact</a></li>
+                    <li class="header-li"><a class="{% if request.path == '/' %}active{% endif %}" href="{% url 'index' %}">Home</a></li>
+                    <li class="header-li {% if request.path == '/about/' %}active{% endif %}"><a class="{% if request.path == '/about/' %}active{% endif %}" href="{% url 'about' %}">About</a></li>
+                    <li class="header-li {% if request.path == '/contact/' %}active{% endif %}"><a class="header-li {% if request.path == '/contact/' %}active{% endif %}" href="{% url 'contact' %}">Contact</a></li>
             </ul>
             <div class="search-bar">
                 <form>

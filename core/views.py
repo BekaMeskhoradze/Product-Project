@@ -4,7 +4,7 @@ from django.urls import reverse_lazy
 from core.forms import ProductForm
 from core.models import *
 from django.db.models import F, ExpressionWrapper, DecimalField, Count
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
 
 # def index(request):
 #     categories = Category.objects.all().annotate(product_count=models.Count('products'))
@@ -163,7 +163,6 @@ class ProductDeleteView(DeleteView):
     def get_success_url(self):
         category_name = self.object.category.name
         return reverse_lazy('categories_details', kwargs={'category_name': category_name})
-
 
 
 

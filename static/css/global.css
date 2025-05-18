@@ -44,23 +44,20 @@ header .header-nav .header-ul{
     align-items: center;
     gap: 3rem;
 }
-header .header-nav .header-ul .header-li{
+header .header-nav .header-ul .header-li a{
     padding: .5rem;
     border-radius: 4px;
     transition: all .3s ease
-}
-header .header-nav .header-ul .header-li:hover{
-    background-color: #ff9a3c;
-}
-
-header .header-nav .header-ul .header-li.active{
-    background-color: #ff9a3c;
-}
-
-header .header-nav .header-ul .header-li a{
     color: #00204a;
     font-size: 1.1rem;
     font-weight: 500;
+}
+header .header-nav .header-ul .header-li a:hover {
+    background-color: #ff9a3c;
+}
+
+header .header-nav .header-ul .header-li a.active{
+    background-color: #ff9a3c;
 }
 .search-bar input {
     padding: 10px 15px;
