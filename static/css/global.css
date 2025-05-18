@@ -12,7 +12,7 @@ html {
 }
 
 body {
-    background-color: #dbd8e3;
+    background-color: #f2f4fb;
 }
 
 a {
@@ -29,6 +29,7 @@ header {
     -webkit-box-shadow: 2px 4px 7px 0px rgba(0, 0, 0, 0.1);
     -moz-box-shadow: 2px 4px 7px 0px rgba(0, 0, 0, 0.1);
     margin-bottom: 3rem;
+    background-color: #f5feff;
 }
 
 .header-nav {

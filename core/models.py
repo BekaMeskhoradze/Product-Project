@@ -1,6 +1,7 @@
 from django.db import models
 
 class Category(models.Model):
+    objects = None
     name = models.CharField(max_length=50, unique=True)
 
 
@@ -13,6 +14,7 @@ class Category(models.Model):
         return f'{self.name}'
 
 class Product(models.Model):
+    objects = None
     name = models.CharField(max_length=50)
     description = models.TextField(null=True, blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
