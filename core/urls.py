@@ -2,6 +2,8 @@ from django.urls import path
 from core.views import *
 from django.views.generic import TemplateView
 
+app_name = 'core'
+
 urlpatterns = [
     path('', CategoryListView.as_view(), name='index'),
     path('about/', TemplateView.as_view(template_name='about.html'), name='about'),

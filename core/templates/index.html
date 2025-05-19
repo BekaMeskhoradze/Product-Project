@@ -10,7 +10,7 @@
         <ul class="main-ul">
         {% for category in categories %}
             <li class="main-li">
-                <a href="{% url 'categories_details' category.name %}"
+                <a href="{% url 'core:categories_details' category.name %}"
                    class="categories-names"
                    data-icon="{{ category.name }}">
                     {{ category.name }}

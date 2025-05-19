@@ -9,7 +9,7 @@
 
     <div class="product-ul">
         {% for product in products %}
-            <a href="{% url 'product_detail' product.pk %}">
+            <a href="{% url 'core:product_detail' product.pk %}">
                 <li class="product-list">
                     <p>Product name: <span>{{ product.name }}</span></p>
                     <p>Product price: <span>{{ product.price }}$</span></p>
@@ -21,7 +21,7 @@
     </div>
 
     <div class="add-product-container">
-        <a href="{% url 'add_product' %}" class="add-btn">Add new product</a>
+        <a href="{% url 'core:add_product' %}" class="add-btn">Add new product</a>
     </div>
 
     <div class="product-stats">

@@ -123,7 +123,7 @@ class ProductCreateView(CreateView):
     model = Product
     form_class = ProductForm
     template_name = 'add_product.html'
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('core:index')
 
 # def update_product(request,product_pk):
 #     product =get_object_or_404(Product, pk=product_pk)
@@ -145,7 +145,7 @@ class ProductUpdateView(UpdateView):
 
     def get_success_url(self):
         category_name = self.object.category.name
-        return reverse_lazy('categories_details', kwargs={'category_name': category_name})
+        return reverse_lazy('core:categories_details', kwargs={'category_name': category_name})
 
 
 # def delete_product(request,product_pk):
@@ -162,7 +162,7 @@ class ProductDeleteView(DeleteView):
 
     def get_success_url(self):
         category_name = self.object.category.name
-        return reverse_lazy('categories_details', kwargs={'category_name': category_name})
+        return reverse_lazy('core:categories_details', kwargs={'category_name': category_name})
 
 
 
