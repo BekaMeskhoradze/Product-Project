@@ -172,5 +172,3 @@ class ProductDeleteView(DeleteView):
 
 
 
-
-
