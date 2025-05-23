@@ -1,10 +1,11 @@
+from django.urls import reverse_lazy
 from django.views import View
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib import messages
 from .forms import CustomUserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
-
+from django.contrib.auth.views import LogoutView
 
 class RegisterLoginView(View):
     template_name = 'register_login.html'
@@ -27,7 +28,6 @@ class RegisterLoginView(View):
             if login_form.is_valid():
                 user = login_form.get_user()
                 login(request, user)
-                messages.success(request, f"Welcome back, {user.username}!")
                 return redirect('core:index')
             else:
                 messages.error(request, "Invalid username or password.")
@@ -42,7 +42,6 @@ class RegisterLoginView(View):
             login_form = AuthenticationForm()
             if register_form.is_valid():
                 register_form.save()
-                messages.success(request, "Registration successful. Please log in.")
                 return redirect('accounts:register_login')
             else:
                 messages.error(request, "Please correct the errors below.")
@@ -52,3 +51,4 @@ class RegisterLoginView(View):
                     'show_register': True,
                 })
         return super().dispatch(request, *args, **kwargs)
+

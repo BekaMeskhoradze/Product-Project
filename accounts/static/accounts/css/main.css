@@ -210,41 +210,11 @@ body{
     transform: translateX(200%);
 }
 
-#error-box, #signup-error-box, #login-error-box {
-  max-width: 350px;
-  margin: 10px 0;
-  padding: 12px 20px;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 14px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+.error {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 2px;
+  margin-bottom: 8px;
+  display: block;
 }
 
-#signup-error-box.error {
-  background-color: #fdecea;
-  color: #d93025;
-  border: 1px solid #d93025;
-  margin-bottom: 12px;
-}
-
-#login-error-box {
-  margin-top: 12px;
-}
-
-#login-error-box .alert {
-  background-color: #fce8e6;
-  color: #b00020;
-  border: 1px solid #b00020;
-  padding: 12px 20px;
-  border-radius: 6px;
-  margin-bottom: 10px;
-  font-weight: 600;
-  box-shadow: 0 2px 6px rgba(176, 0, 32, 0.15);
-}
-
-#login-error-box .alert.success {
-  background-color: #e6f4ea;
-  color: #188038;
-  border: 1px solid #188038;
-  box-shadow: 0 2px 6px rgba(24, 128, 56, 0.15);
-}

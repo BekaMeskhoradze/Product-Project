@@ -11,6 +11,13 @@
         {% for product in products %}
             <a href="{% url 'core:product_detail' product.pk %}">
                 <li class="product-list">
+                    <div class="img-container">
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image">
+                        {% else %}
+                        <img src="{% static 'images/empty.png' %}" alt="Default image" class="product-image">
+                        {% endif %}
+                    </div>
                     <p>Product name: <span>{{ product.name }}</span></p>
                     <p>Product price: <span>{{ product.price }}$</span></p>
                     <p>Total products - <span>{{ product.quantity }}</span></p>
@@ -19,11 +26,38 @@
             </a>
         {% endfor %}
     </div>
-
+    {% if is_paginated %}
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        {% if page_obj.has_previous %}
+          <li class="page-item"><a class="page-link" href="?q=1">&laquo; First</a></li>
+          <li class="page-item"><a class="page-link" href="?q={{ page_obj.previous_page_number }}">Previous</a></li>
+        {% else %}
+          <li class="page-item"><a class="page-link disabled">&laquo; First</a></li>
+          <li class="page-item"><a class="page-link disabled">Previous</a></li>
+        {% endif %}
+          {% for num in paginator.page_range %}
+            {% if page_obj.number == num %}
+                <li class="page-item"><a class="page-link active" >{{ num }}</a></li>
+            {% elif num > page_obj.number|add:-3  and num < page_obj.number|add:3 %}
+                <li class="page-item"><a class="page-link" href="?q={{ num }}">{{ num }}</a></li>
+            {% endif %}
+          {% endfor %}
+        {% if page_obj.has_next %}
+          <li class="page-item"><a class="page-link" href="?q={{ page_obj.next_page_number }}">Next</a></li>
+          <li class="page-item"><a class="page-link" href="?q={{ paginator.num_pages }}">Last &raquo;</a></li>
+        {% else %}
+          <li class="page-item"><a class="page-link disabled">Next</a></li>
+          <li class="page-item"><a class="page-link disabled">Last &raquo;</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+    {% endif %}
+    {% if user.is_authenticated %}
     <div class="add-product-container">
         <a href="{% url 'core:add_product' %}" class="add-btn">Add new product</a>
     </div>
-
+    {% endif %}
     <div class="product-stats">
         <div class="stat-row">
             <span class="label">Most expensive product:</span>

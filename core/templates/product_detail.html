@@ -8,12 +8,19 @@
     <h1>Product Details</h1>
 
     <ul class="product-info">
+        <div class="img-container">
+            {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image">
+            {% else %}
+                <img src="{% static 'images/empty.png' %}" alt="Default image" class="product-image">
+            {% endif %}
+        </div>
         <li><strong>Name:</strong> {{ product.name }}</li>
         <li><strong>Price:</strong> {{ product.price }}$</li>
         <li><strong>Total products:</strong> {{ product.quantity }} products</li>
         <li><strong>Total price of products:</strong> {{ product.total_value }}$</li>
     </ul>
-
+    {% if user.is_authenticated %}
     <div class="button-container">
         <a href="{% url 'core:update_product' product.id %}" class="update-btn">Update</a>
         <form method="post" action="{% url 'core:delete_product' product.id %}" style="display: inline;">
@@ -21,5 +28,6 @@
             <button type="submit" class="delete-btn" onclick="return confirm('Are you sure you want to delete this product?')">Delete</button>
         </form>
     </div>
+    {% endif %}
 </div>
 {% endblock %}

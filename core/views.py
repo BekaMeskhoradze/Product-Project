@@ -52,6 +52,8 @@ class CategoryDetailView(ListView):
     model = Product
     template_name = 'categories_details.html'
     context_object_name = 'products'
+    paginate_by = 3
+    page_kwarg = 'q'
 
     @cached_property
     def get_category(self):
